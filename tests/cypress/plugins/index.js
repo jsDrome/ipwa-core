@@ -14,12 +14,12 @@
 
 const rc = require('rc');
 
-const { environment: { STAGE_URL } } = rc('config');
+const { props: { url } } = rc('config');
 
 /**
  * @type {Cypress.PluginConfig}
  */
 module.exports = (on, config) => {
-  config.baseUrl = STAGE_URL;
+  config.baseUrl = url;
   return config;
 }

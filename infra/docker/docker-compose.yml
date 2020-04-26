@@ -4,7 +4,8 @@ services:
     build:
       context: ../..
       dockerfile: infra/docker/Dockerfile
-      # args:
+      args:
+        config_props__gtmId: ${config_props__gtmId}
         # config_login__linkedin__clientId: ${config_login__linkedin__clientId}
         # config_login__linkedin__clientSecret: ${config_login__linkedin__clientSecret}
         # config_login__github__clientId: ${config_login__github__clientId}

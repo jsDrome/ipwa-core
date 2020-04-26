@@ -6,8 +6,6 @@ import config from './config';
 const {
   alerts,
   urls: {
-    DEV_URL,
-    PROD_URL,
     linkedin: {
       authUrl : linkedinAuthUrl,
     },
@@ -26,6 +24,9 @@ const {
       encryptKey,
     },
   },
+  props: {
+    url,
+  },
 } = config;
 
 export const isUserLoggedIn = cookies => !!cookies.__session;
@@ -40,8 +41,7 @@ export const getLinkedinLoginUrl = originalUrl => {
 
 export const getLinkedInRedirectUrl = originalUrl => {
   // eslint-disable-next-line no-undef
-  const URL = BUILD_NODE_ENV === 'production' ? PROD_URL : DEV_URL;
-  return `${URL}/login/linkedin/process?originalUrl=${originalUrl}`;
+  return `${url}/login/linkedin/process?originalUrl=${originalUrl}`;
 };
 
 export const getAppRedirectUrlParams = (provider, type, errorType) => `?message=${encodeURIComponent(getMessage(provider, type))}&type=${errorType}&duration=${getDuration(provider, type)}`;
@@ -60,8 +60,7 @@ export const getGithubLoginUrl = originalUrl => {
 
 export const getGithubRedirectUrl = originalUrl => {
   // eslint-disable-next-line no-undef
-  const URL = BUILD_NODE_ENV === 'production' ? PROD_URL : DEV_URL;
-  return `${URL}/login/github/process?originalUrl=${originalUrl}`;
+  return `${url}/login/github/process?originalUrl=${originalUrl}`;
 };
 
 /*=============*/

@@ -16,8 +16,8 @@ sh ./scripts/sanity_check.sh
 log "Releasing to Heroku"
 sh ./scripts/release_heroku.sh
 
-# log "Regression tests"
-# sh ./scripts/regression_tests.sh
+log "Regression tests"
+sh ./scripts/regression_tests.sh
 
 # log "Releasing to Dockerhub"
 # sh ./scripts/release_dockerhub.sh
