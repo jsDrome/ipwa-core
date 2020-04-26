@@ -6,13 +6,13 @@ WORKDIR /opt/app
 # ARG config_login__linkedin__clientSecret
 # ARG config_login__github__clientId
 # ARG config_login__github__clientSecret
-ARG config_props__gtmId
+# ARG config_props__gtmId
 
 # ARG config_login__linkedin__clientId=$config_login__linkedin__clientId
 # ARG config_login__linkedin__clientSecret=$config_login__linkedin__clientSecret
 # ARG config_login__github__clientId=$config_login__github__clientId
 # ARG config_login__github__clientSecret=$config_login__github__clientSecret
-ENV config_props__gtmId=$config_props__gtmId
+# ENV config_props__gtmId=$config_props__gtmId
 
 ADD assets /opt/app/assets
 ADD src /opt/app/src

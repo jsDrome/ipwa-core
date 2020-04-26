@@ -1,31 +1,44 @@
 # jsDrome configurations
 
-## Basic configurations
+This project uses `dotenv` and `rc` for setting configurables.
 
-`.configrc`
+1. Set these values in `./.env/.env`
 
-## Sanity checks
+```
+config_secrets__linkedin__clientId
+config_secrets__linkedin__clientSecret
+config_secrets__github__clientId
+config_secrets__github__clientSecret
+config_secrets_jsdrome_encryptKey
+config_props__gtmId
+```
 
-`./.github/workflows/build-master.yml`
+2. Set these values in `./.env/env.sh`
 
-  - `CODECOV_TOKEN`
+```shell
+export IMAGE_NAME
+export CODECOV_TOKEN
+export HEROKU_APP_NAME
+export HEROKU_API_KEY
+export CYPRESS_TOKEN
+export CYPRESS_PROJECT_ID
+export PERCY_TOKEN
+```
 
-## Heroku staging
+3. Create the following Github secrets
 
-`./.github/workflows/build-master.yml`
+```
+config_props__url
+IMAGE_NAME
+CODECOV_TOKEN
+HEROKU_APP_NAME
+HEROKU_API_KEY
+CYPRESS_TOKEN
+CYPRESS_PROJECT_ID
+PERCY_TOKEN
+```
 
-  - `IMAGE_NAME`
-  - `HEROKU_APP_NAME`
-  - `HEROKU_API_KEY`
-
-## Regression tests
-
- `./.github/workflows/build-master.yml`
-
-  - `CYPRESS_TOKEN`
-  - `CYPRESS_PROJECT_ID`
-  - `PERCY_TOKEN`
-
+4. Override values in Heroku by setting config vars
 
 ## Run app locally
 
@@ -35,9 +48,6 @@ npm run nodemon
 ```
 
 ## Run app as docker container
-
-Set the following environment variables.
-  - `IMAGE_NAME`
 
 ```shell
 npm run build:docker
@@ -49,46 +59,14 @@ npm run build:docker
 npm run test
 ```
 
-## Run Codecov
-
-Set the following environment variables.
-  - `CODECOV_TOKEN`
-
-```shell
-npm run test:codecov
-```
-
-## Run Cypress tests
-
-Set the following environment variables.
-  - `CYPRESS_PROJECT_ID`
-  - `CYPRESS_TOKEN`
+## Cypress tests
 
 ```shell
 npm run test:cypress:open
 ```
 
-## Run Percy
-
-Set the following environment variables.
-  - `PERCY_TOKEN`
-
-```shell
-npm run test:percy
-```
-
-## Run Puppeteer
+## Puppeteer tests
 
 ```shell
 npm run test:puppeteer
 ```
-
-## Deploy on Heroku
-
-Set the following environment variables.
-
-  - `HEROKU_APP_NAME`
-  - `HEROKU_API_KEY`
-
-```shell
-npm run release:heroku
