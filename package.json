@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config=node_modules/@jsdrome/webpack-config",
     "build:client:dev": "npm run build -- --env=client/web/dev",
     "build:client:dev:watch": "npm run build:client:dev -- --watch",
@@ -16,6 +15,10 @@
     "build:server:prod": "npm run build -- --env=server/prod",
     "build:server:prod:watch": "npm run build:server:prod -- --watch",
     "build:docker": "docker-compose -f infra/docker/docker-compose.yml up --build",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:codecov": "codecov -t $CODECOV_TOKEN",
+    "test:scripts": "sh ./scripts/test-scripts.sh",
     "clean": "rimraf ./*.log dist coverage .firebase .expo web-build",
     "dev": "concurrently --kill-others \"npm run build:client:dev:watch\" \"npm run build:server:dev:watch\" -n client,server -c blue,yellow",
     "prod": "concurrently --kill-others \"npm run build:client:prod:watch\" \"npm run build:server:prod:watch\" -n client,server -c blue,yellow",
@@ -45,6 +48,9 @@
     "axios": "^0.19.2",
     "concurrently": "^5.1.0",
     "cookie-parser": "^1.4.5",
+    "expo": "^37.0.8",
+    "expo-ads-admob": "^8.1.0",
+    "expo-cli": "^3.19.2",
     "express": "^4.17.1",
     "firebase-admin": "^8.10.0",
     "firebase-functions": "^3.6.0",
@@ -61,6 +67,9 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^5.2.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "react-native-web": "^0.12.2",
+    "react-native-webview": "^9.3.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.5",
@@ -71,8 +80,12 @@
     "@jsdrome/commitlint-config": "^1.0.0",
     "@jsdrome/eslint-config": "^1.0.1",
     "@jsdrome/webpack-config": "^1.0.14",
+    "babel-jest": "^25.4.0",
+    "codecov": "^3.6.5",
     "dotenv": "^8.2.0",
     "husky": "^4.2.5",
+    "jest": "^25.4.0",
+    "react-test-renderer": "^16.13.1",
     "rimraf": "^3.0.2"
   },
   "eslintConfig": {
@@ -87,5 +100,28 @@
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "jest": {
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ],
+    "moduleNameMapper": {
+      "@src(.*)$": "<rootDir>/src/$1",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tests/jest/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/tests/jest/__mocks__/styleMock.js"
+    },
+    "modulePathIgnorePatterns": [
+      "cypress",
+      "puppeteer"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(@jsdrome/*)/)"
+    ]
+  },
+  "engines": {
+    "node": "8"
   }
 }

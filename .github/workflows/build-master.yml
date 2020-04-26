@@ -7,8 +7,10 @@ on:
 
 env:
   IMAGE_NAME: jsdrome/jsdrome
+  HEROKU_APP_NAME: jsdrome
+  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
   # GITHUB_DOCKER_IMAGE_NAME: ipwa
-  # HEROKU_APP_NAME: ipwa
   # FIREBASE_APP_NAME: ipwa-app
   # DOCKER_USER: ${{ secrets.DOCKER_USER }}
   # DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
@@ -16,8 +18,6 @@ env:
   # FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
   # CYPRESS_TOKEN: ${{ secrets.CYPRESS_TOKEN }}
   # CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
-  # CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-  # HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
   # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   # GITHUB_REPO: ${{ github.repository }}
@@ -29,6 +29,8 @@ env:
   config_secrets__linkedin__clientSecret: ${{ secrets.config_login__linkedin__clientSecret }}
   config_secrets__github__clientId: ${{ secrets.config_login__github__clientId }}
   config_secrets__github__clientSecret: ${{ secrets.config_login__github__clientSecret }}
+  config_secrets_jsdrome_encryptKey: ${{ secrets.config_secrets_jsdrome_encryptKey }}
+  config_props__gtmId: ${{ secrets.config_props__gtmId }}
 jobs:
   sanity_check:
     runs-on: ubuntu-latest
