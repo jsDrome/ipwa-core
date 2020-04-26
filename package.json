@@ -1,14 +1,31 @@
 {
-  "name": "@jsdrome/boilerplate",
+  "name": "@jsdrome/jsdrome",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config=node_modules/@jsdrome/webpack-config",
+    "build:client:dev": "npm run build -- --env=client/web/dev",
+    "build:client:dev:watch": "npm run build:client:dev -- --watch",
+    "build:client:devserver": "webpack-dev-server --config=node_modules/@jsdrome/webpack-config --env=client/web/dev",
+    "build:client:prod": "npm run build -- --env=client/web/prod",
+    "build:client:prod:watch": "npm run build:client:prod -- --watch",
+    "build:server:dev": "npm run build -- --env=server/dev",
+    "build:server:dev:watch": "npm run build:server:dev -- --watch",
+    "build:server:prod": "npm run build -- --env=server/prod",
+    "build:server:prod:watch": "npm run build:server:prod -- --watch",
+    "build:docker": "docker-compose -f infra/docker/docker-compose.yml up --build",
+    "clean": "rimraf ./*.log dist coverage .firebase .expo web-build",
+    "dev": "concurrently --kill-others \"npm run build:client:dev:watch\" \"npm run build:server:dev:watch\" -n client,server -c blue,yellow",
+    "prod": "concurrently --kill-others \"npm run build:client:prod:watch\" \"npm run build:server:prod:watch\" -n client,server -c blue,yellow",
+    "lint": "eslint .",
+    "nodemon": "cd dist && nodemon index.js --watch dist/index.js",
+    "start": "cd dist && node ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jsDrome/boilerplate.git"
+    "url": "git+https://github.com/jsDrome/jsdrome.git"
   },
   "keywords": [
     "jsdrome",
@@ -17,17 +34,46 @@
   "author": "Sreeram Padmanabhan",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jsDrome/boilerplate/issues"
+    "url": "https://github.com/jsDrome/jsdrome/issues"
   },
-  "homepage": "https://github.com/jsDrome/boilerplate#readme",
+  "homepage": "https://github.com/jsDrome/jsdrome#readme",
+  "dependencies": {
+    "@babel/register": "^7.9.0",
+    "@jsdrome/components": "^1.0.14",
+    "@material-ui/core": "^4.9.11",
+    "D": "^1.0.0",
+    "axios": "^0.19.2",
+    "concurrently": "^5.1.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "firebase-admin": "^8.10.0",
+    "firebase-functions": "^3.6.0",
+    "lodash": "^4.17.15",
+    "md5": "^2.2.1",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.4.6",
+    "object-path-immutable": "^3.1.1",
+    "passport": "^0.4.1",
+    "passport-facebook": "^3.0.0",
+    "passport-linkedin": "^1.0.0",
+    "querystring": "^0.2.0",
+    "rc": "^1.2.8",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^5.2.1",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
+  },
   "devDependencies": {
+    "@jsdrome/babel-preset-jsdrome": "^1.0.4",
     "@jsdrome/commitlint-config": "^1.0.0",
-    "@jsdrome/eslint-config": "^1.0.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.8.0",
-    "eslint-plugin-cypress": "^2.10.3",
-    "eslint-plugin-react": "^7.19.0",
-    "husky": "^4.2.5"
+    "@jsdrome/eslint-config": "^1.0.1",
+    "@jsdrome/webpack-config": "^1.0.14",
+    "dotenv": "^8.2.0",
+    "husky": "^4.2.5",
+    "rimraf": "^3.0.2"
   },
   "eslintConfig": {
     "extends": "@jsdrome/eslint-config"
