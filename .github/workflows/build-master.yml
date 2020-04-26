@@ -48,13 +48,13 @@ jobs:
       - name: Sanity Checks
         run: sh ./scripts/sanity_check.sh
 
-  # release_heroku:
-  #   runs-on: ubuntu-latest
-  #   needs: [sanity_check]
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Heroku Staging
-  #       run: sh ./scripts/release_heroku.sh
+  release_heroku:
+    runs-on: ubuntu-latest
+    needs: [sanity_check]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Heroku Staging
+        run: sh ./scripts/release_heroku.sh
 
   # regression_tests:
   #   needs: [sanity_check, release_heroku]
