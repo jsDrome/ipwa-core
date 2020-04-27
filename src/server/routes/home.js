@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import { Provider as ReduxProvider } from 'react-redux';
 import { ServerStyleSheets, ThemeProvider } from '@material-ui/core/styles';
 
-import config from '../config';
+import config from '../../config';
 import App from '../../client/web/App/App';
 import Home from '../../client/web/Home/Home';
 import Auth from '../../client/web/Auth/Auth';

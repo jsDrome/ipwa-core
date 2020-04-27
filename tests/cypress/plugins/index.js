@@ -13,7 +13,6 @@
 // the project's config changing)
 
 const rc = require('rc');
-
 const { props: { url } } = rc('config');
 
 /**

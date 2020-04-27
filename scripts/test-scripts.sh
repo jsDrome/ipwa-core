@@ -8,13 +8,13 @@ log()
 }
 
 # log "Setting environment variables"
-source ./.env/.env.sh
+source ./.env/env.sh
 
 log "Sanity Checks"
 sh ./scripts/sanity_check.sh
 
-log "Releasing to Heroku"
-sh ./scripts/release_heroku.sh
+# log "Releasing to Heroku"
+# sh ./scripts/release_heroku.sh
 
 log "Regression tests"
 sh ./scripts/regression_tests.sh

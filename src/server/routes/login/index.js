@@ -2,12 +2,12 @@
 import express from 'express';
 import linkedin from './linkedin';
 import github from './github';
-// import jsdrome from './jsdrome';
+// import email from './email';
 
 const router = express.Router();
 
 router.use('/linkedin', linkedin);
 router.use('/github', github);
-// router.use('/jsdrome', jsdrome);
+// router.use('/email', email);
 
 export default router;

@@ -4,7 +4,7 @@ import {
   isEmailAlreadyPresentInDb,
   getUserDetailsFromDB,
   saveUserInDB,
-  isUsernameAlreadyPresentInDb,
+  // isUsernameAlreadyPresentInDb,
 } from '../../firebase';
 
 import {
@@ -13,7 +13,7 @@ import {
   getMessage,
   getDuration,
   setSessionCookie,
-  isValidUsername,
+  // isValidUsername,
 } from '../../server.utils';
 
 import mailer from './mailer';
@@ -133,74 +133,74 @@ router.post('/', async (req, res) => {
   Return success;
 */
 
-router.post('/username', async (req, res) => {
-  const username = req.body.username.toLowerCase();
-  const { password } = req.body;
-  const isValidGivenUsername = isValidUsername(username);
+// router.post('/username', async (req, res) => {
+//   const username = req.body.username.toLowerCase();
+//   const { password } = req.body;
+//   const isValidGivenUsername = isValidUsername(username);
 
-  if (!isValidGivenUsername) return res.send({
-    login: 'false',
-    type: 'error',
-    message: getMessage('error', 'login', 'invalid_username'),
-    duration: getDuration('error', 'login', 'invalid_username'),
-  });
+//   if (!isValidGivenUsername) return res.send({
+//     login: 'false',
+//     type: 'error',
+//     message: getMessage('error', 'login', 'invalid_username'),
+//     duration: getDuration('error', 'login', 'invalid_username'),
+//   });
 
-  if (!password) return res.send({
-    login: 'false',
-    type: 'error',
-    message: getMessage('error', 'login', 'empty_password'),
-    duration: getDuration('error', 'login', 'empty_password'),
-  });
+//   if (!password) return res.send({
+//     login: 'false',
+//     type: 'error',
+//     message: getMessage('error', 'login', 'empty_password'),
+//     duration: getDuration('error', 'login', 'empty_password'),
+//   });
 
-  try {
-    if (!await isUsernameAlreadyPresentInDb(username)) {
-      if(!await saveUserInDB(username, encrypt(username), true, password)) {
-        return res.send({
-          login: 'false',
-          type: 'error',
-          message: getMessage('error', 'login', 'technical'),
-          duration: getDuration('error', 'login', 'technical'),
-        });
-      }
+//   try {
+//     if (!await isUsernameAlreadyPresentInDb(username)) {
+//       if(!await saveUserInDB(username, encrypt(username), true, password)) {
+//         return res.send({
+//           login: 'false',
+//           type: 'error',
+//           message: getMessage('error', 'login', 'technical'),
+//           duration: getDuration('error', 'login', 'technical'),
+//         });
+//       }
 
-      setSessionCookie(res, username);
+//       setSessionCookie(res, username);
 
-      return res.send({
-        login: 'true',
-        type: 'success',
-        message: getMessage('success', 'login', 'success'),
-        duration: getDuration('success', 'login', 'success'),
-      });
-    }
+//       return res.send({
+//         login: 'true',
+//         type: 'success',
+//         message: getMessage('success', 'login', 'success'),
+//         duration: getDuration('success', 'login', 'success'),
+//       });
+//     }
 
-    const { password: usersPassword } = await getUserDetailsFromDB(username);
-    const isGivenPasswordCorrect = encrypt(password) === usersPassword;
-    if (!isGivenPasswordCorrect) return res.send({
-      login: 'false',
-      type: 'error',
-      message: getMessage('error', 'login', 'password_wrong'),
-      duration: getDuration('error', 'login', 'password_wrong'),
-    });
+//     const { password: usersPassword } = await getUserDetailsFromDB(username);
+//     const isGivenPasswordCorrect = encrypt(password) === usersPassword;
+//     if (!isGivenPasswordCorrect) return res.send({
+//       login: 'false',
+//       type: 'error',
+//       message: getMessage('error', 'login', 'password_wrong'),
+//       duration: getDuration('error', 'login', 'password_wrong'),
+//     });
 
-    setSessionCookie(res, username);
+//     setSessionCookie(res, username);
 
-    return res.send({
-      login: 'true',
-      type: 'success',
-      message: getMessage('success', 'login', 'success'),
-      duration: getDuration('success', 'login', 'success'),
-    });
+//     return res.send({
+//       login: 'true',
+//       type: 'success',
+//       message: getMessage('success', 'login', 'success'),
+//       duration: getDuration('success', 'login', 'success'),
+//     });
 
-  } catch (err) {
-    return res.send({
-      login: 'false',
-      type: 'error',
-      message: getMessage('error', 'login', 'technical'),
-      duration: getDuration('error', 'login', 'technical'),
-    });
-  }
+//   } catch (err) {
+//     return res.send({
+//       login: 'false',
+//       type: 'error',
+//       message: getMessage('error', 'login', 'technical'),
+//       duration: getDuration('error', 'login', 'technical'),
+//     });
+//   }
 
-});
+// });
 
 export default router;
 

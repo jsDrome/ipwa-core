@@ -20,9 +20,6 @@ const Register = props => {
   const [ index, setIndex ] = useState(0);
 
   return <Fragment>
-    <Expansion title="Choose a username" isExpanded={index === 0} onChange={(e, expanded) => expanded && setIndex(0)}>
-      <UsernameSignUpForm {...props} />
-    </Expansion>
     <Expansion title="Social Login" isExpanded={index === 1} onChange={(e, expanded) => expanded && setIndex(1)}>
       <SocialLogin {...props} />
     </Expansion>
@@ -30,49 +27,6 @@ const Register = props => {
       <EmailSignUpForm {...props} />
     </Expansion>
   </Fragment>
-};
-
-const UsernameSignUpForm = ({ classes, setAlert }) => {
-
-  const [ username, setUsername ] = useState('');
-  const [ password, setPassword ] = useState('');
-
-  const signIn = async () => {
-    try {
-      const signInRes = await fetch('/login/jsdrome/username', {
-        method: 'POST',
-        mode: 'cors',
-        body: JSON.stringify({
-          username,
-          password,
-        }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-      if (!signInRes.ok) throw new Error();
-      else {
-        const { login, type, message, duration } = await signInRes.json();
-        setAlert({
-          type,
-          message,
-          duration,
-        });
-        if (login === 'true') window.location.reload(false);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  return <form className={classes.form} noValidate autoComplete="off" onSubmit={signIn}>
-    <TextField className={classes.input} fullWidth label="Username" helperText="Between 6-11 letters" onChange={e => setUsername(e.target.value)} value={username} /><br />
-    <TextField className={classes.input} fullWidth label="Password" type="password" onChange={e => setPassword(e.target.value)} value={password} />
-    <Button
-      fullWidth
-      onClick={signIn}
-      variant="contained"
-      className={classes.signInButton}
-      color="primary">Go</Button>
-  </form>;
 };
 
 const Expansion = ({ title, children, isExpanded, onChange }) => <ExpansionPanel expanded={isExpanded} onChange={onChange} elevation={4}>
@@ -125,7 +79,7 @@ const EmailSignUpForm = ({ classes, setAlert }) => {
 
   const signIn = async () => {
     try {
-      const signInRes = await fetch('/login/jsdrome', {
+      const signInRes = await fetch('/login/email', {
         method: 'POST',
         mode: 'cors',
         body: JSON.stringify({ email, password }),

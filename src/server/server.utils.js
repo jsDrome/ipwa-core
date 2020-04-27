@@ -1,7 +1,6 @@
 import md5 from 'md5';
-import get from 'lodash/get';
 
-import config from './config';
+import config from '../config';
 
 const {
   alerts,
@@ -29,9 +28,17 @@ const {
   },
 } = config;
 
-export const isUserLoggedIn = cookies => !!cookies.__session;
+export const sessionKey = '__session';
 
-export const getEmailFromCookies = cookies => get(cookies, '__session.email');
+export const isUserLoggedIn = cookies => !!cookies[sessionKey];
+
+export const getEmailFromCookies = cookies => {
+  try {
+    return JSON.parse(cookies[sessionKey]).email;
+  } catch (err) {
+    return '';
+  }
+};
 
 export const getLinkedinLoginUrl = originalUrl => {
   let _linkedinAuthUrl = linkedinAuthUrl.replace('<redirectUrl>', getLinkedInRedirectUrl(originalUrl));
@@ -46,7 +53,7 @@ export const getLinkedInRedirectUrl = originalUrl => {
 
 export const getAppRedirectUrlParams = (provider, type, errorType) => `?message=${encodeURIComponent(getMessage(provider, type))}&type=${errorType}&duration=${getDuration(provider, type)}`;
 
-export const setSessionCookie = (res, email) => res.cookie('__session', JSON.stringify({
+export const setSessionCookie = (res, email) => res.cookie(sessionKey, JSON.stringify({
   accessToken: encrypt(email),
   email,
 }), getCookieSettings());

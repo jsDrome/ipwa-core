@@ -2,7 +2,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 
-import config from './config';
+import config from '../config';
 import home from './routes/home';
 import login from './routes/login/';
 import logout from './routes/logout';
