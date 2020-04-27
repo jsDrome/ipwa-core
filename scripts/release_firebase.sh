@@ -2,7 +2,7 @@ set -e
 npm run build:client:prod
 npm run build:server:firebase
 node ./scripts/package-copier.js
-npm i --prefix _dist
+# npm i --prefix dist
 npx firebase use $FIREBASE_APP_NAME
-npm run firebase:deploy
+npx firebase deploy --token $FIREBASE_TOKEN
 npm run clean

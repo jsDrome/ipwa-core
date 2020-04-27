@@ -1,47 +1,37 @@
 # jsDrome
 
-## Runtime config
-
-### Local
-
-1. Change defaults in `.configrc` as necessary.
-
-2. Set these values in `./.env/env.sh`.
+## 1. Set these runtime env vars in `./.env/env.sh`.
 
 ```shell
-export config_secrets__linkedin__clientId
-export config_secrets__linkedin__clientSecret
-export config_secrets__github__clientId
-export config_secrets__github__clientSecret
-export const config_secrets__sendInBlue__user
-export const config_secrets__sendInBlue__pass
-export config_props__gtmId
+config_secrets__linkedin__clientId
+config_secrets__linkedin__clientSecret
+config_secrets__github__clientId
+config_secrets__github__clientSecret
+const config_secrets__sendInBlue__user
+const config_secrets__sendInBlue__pass
+config_secrets_jsdrome_encryptKey
+config_props__gtmId
 ```
 
-3. Also make appropriate changes to `./infra/docker/docker-compose.yml` and `./infra/docker/Dockerfile`. (This is required only if you are using docker for local development)
-
-### Staging
-
-Override runtime variables in Heroku by setting config vars.
-
-### Production
-
-Override runtime variables in Firebase by setting environment variables.
-
-## Build-time config
-
-1. Create the following Github secrets.
+## 2. Set these build time env vars in `./.env/env.sh` and in Github secrets
 
 ```
-IMAGE_NAME
 CODECOV_TOKEN
+IMAGE_NAME
 HEROKU_APP_NAME
 HEROKU_API_KEY
 CYPRESS_TOKEN
 CYPRESS_PROJECT_ID
 PERCY_TOKEN
+FIREBASE_APP_NAME
+FIREBASE_TOKEN
 config_props__url
 ```
+
+## 3. Change defaults in `.configrc` as necessary.
+
+
+# Development
 
 ## Run app locally
 
@@ -52,7 +42,7 @@ npm run nodemon
 
 ## Run app as docker container
 
-Set `IMAGE_NAME` environment variable
+Make appropriate changes to `./infra/docker/docker-compose.yml` and `./infra/docker/Dockerfile`.
 
 ```shell
 npm run build:docker

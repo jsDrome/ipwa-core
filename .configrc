@@ -96,5 +96,11 @@
   "props": {
     "url": "http://localhost:5001",
     "gtmId": "GTM-12345"
+  },
+  "firebase": {
+    "apiKey": "abcde",
+    "authDomain": "jsdrome.firebaseapp.com",
+    "databaseURL": "https://jsdrome.firebaseio.com",
+    "storageBucket": "jsdrome.appspot.com"
   }
 }

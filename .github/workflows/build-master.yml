@@ -7,18 +7,18 @@ on:
 
 env:
   CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-  IMAGE_NAME: jsdrome/jsdrome
-  HEROKU_APP_NAME: jsdrome
+  IMAGE_NAME: ${{ secrets.IMAGE_NAME }}
+  HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
   HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-  CYPRESS_TOKEN: ${{ secrets.CYPRESS_TOKEN }}
   CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+  CYPRESS_TOKEN: ${{ secrets.CYPRESS_TOKEN }}
   PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
   config_props__url: ${{ secrets.config_props__url }}
+  FIREBASE_APP_NAME: ${{ secrets.FIREBASE_APP_NAME }}
+  FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
   # GITHUB_DOCKER_IMAGE_NAME: ipwa
-  # FIREBASE_APP_NAME: ipwa-app
   # DOCKER_USER: ${{ secrets.DOCKER_USER }}
   # DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
-  # FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
   # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   # GITHUB_REPO: ${{ github.repository }}
@@ -76,15 +76,15 @@ jobs:
   #     - name: Push to Github Container Registry
   #       run: sh ./scripts/release_github.sh
 
-  # release_firebase:
-  #   needs: [sanity_check, release_heroku, regression_tests]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Cloud functions
-  #       run: |
-  #         npm i
-  #         sh ./scripts/release_firebase.sh
+  release_firebase:
+    needs: [sanity_check, release_heroku, regression_tests]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cloud functions
+        run: |
+          npm i
+          sh ./scripts/release_firebase.sh
 
   # release_expo:
   #   needs: [sanity_check, release_heroku, regression_tests]

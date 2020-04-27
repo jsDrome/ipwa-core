@@ -1,30 +1,30 @@
-import firebase from 'firebase-admin';
-import { runWith } from 'firebase-functions';
+import admin from 'firebase-admin';
+import * as functions from 'firebase-functions';
 
-import config from './config';
-import server from './server';
+import server from './';
+// import config from '../config';
 
-const {
-  firebase: {
-    authDomain,
-    databaseURL,
-    storageBucket,
-  },
-} = config;
+// const {
+//   firebase: {
+//     apiKey,
+//     authDomain,
+//     databaseURL,
+//     storageBucket,
+//   },
+// } = config;
 
-const firebaseConfig = {
-  // eslint-disable-next-line no-undef
-  apiKey: BUILD_SECRETS_FIREBASE_APIKEY,
-  authDomain,
-  databaseURL,
-  storageBucket,
-};
+// const firebaseConfig = {
+//   apiKey,
+//   authDomain,
+//   databaseURL,
+//   storageBucket,
+// };
 
-firebase.initializeApp(firebaseConfig);
+admin.initializeApp();
 
 const runtimeOpts = {
   timeoutSeconds: 60,
-  memory: '2GB',
+  // memory: '2GB',
 };
 
-export const myExpressApp = runWith(runtimeOpts).https.onRequest(server);
+export const myExpressApp = functions.runWith(runtimeOpts).https.onRequest(server);
