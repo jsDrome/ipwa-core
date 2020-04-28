@@ -56,7 +56,7 @@
   },
   "homepage": "https://github.com/jsDrome/jsdrome#readme",
   "dependencies": {
-    "@jsdrome/components": "^1.0.14",
+    "@jsdrome/components": "^1.2.0",
     "@material-ui/core": "^4.9.11",
     "axios": "^0.19.2",
     "cookie-parser": "^1.4.5",
@@ -84,12 +84,13 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "@jsdrome/babel-preset-jsdrome": "^1.0.4",
-    "@jsdrome/commitlint-config": "^1.0.0",
-    "@jsdrome/eslint-config": "^1.0.1",
-    "@jsdrome/webpack-config": "^1.0.15",
+    "@jsdrome/babel-preset-jsdrome": "^1.2.0",
+    "@jsdrome/commitlint-config": "^1.1.0",
+    "@jsdrome/eslint-config": "^1.1.0",
+    "@jsdrome/webpack-config": "^1.2.0",
     "@percy/script": "^1.0.3",
     "babel-jest": "^25.4.0",
+    "babel-preset-expo": "^8.1.0",
     "codecov": "^3.6.5",
     "concurrently": "^5.2.0",
     "cypress": "^4.4.1",

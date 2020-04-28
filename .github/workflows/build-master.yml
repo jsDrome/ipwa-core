@@ -26,11 +26,6 @@ env:
   # EXPO_CLI_USERNAME: ${{ secrets.EXPO_CLI_USERNAME }}
   # EXPO_CLI_PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}
   # config_firebase__apiKey: ${{ secrets.config_firebase__apiKey }}
-  # config_secrets__linkedin__clientId: ${{ secrets.config_login__linkedin__clientId }}
-  # config_secrets__linkedin__clientSecret: ${{ secrets.config_login__linkedin__clientSecret }}
-  # config_secrets__github__clientId: ${{ secrets.config_login__github__clientId }}
-  # config_secrets__github__clientSecret: ${{ secrets.config_login__github__clientSecret }}
-  # config_secrets_jsdrome_encryptKey: ${{ secrets.config_secrets_jsdrome_encryptKey }}
 jobs:
   sanity_check:
     runs-on: ubuntu-latest
