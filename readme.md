@@ -2,7 +2,7 @@
 
 # jsDrome
 
-## 1. Set these runtime env vars in `./.env/env.sh`.
+## 1. Set these runtime env vars in `.env`.
 
 ```shell
 config_secrets__linkedin__clientId
@@ -15,7 +15,7 @@ config_secrets_jsdrome_encryptKey
 config_props__gtmId
 ```
 
-## 2. Set these build time env vars in `./.env/env.sh` and in Github secrets
+## 2. Set these build time env vars in `.env` and in Github secrets
 
 ```
 CODECOV_TOKEN
@@ -32,7 +32,6 @@ config_props__url
 
 ## 3. Change defaults in `.configrc` as necessary.
 
-
 # Development
 
 ## Run app locally
@@ -43,8 +42,6 @@ npm run nodemon
 ```
 
 ## Run app as docker container
-
-Make appropriate changes to `./infra/docker/docker-compose.yml` and `./infra/docker/Dockerfile`.
 
 ```shell
 npm run build:docker

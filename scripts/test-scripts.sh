@@ -7,14 +7,13 @@ log()
   printf "${GREEN}${BOLD}${WORD}${NC}\n"
 }
 
-# log "Setting environment variables"
-source ./.env/env.sh
+log "Setting environment variables"
 
 log "Sanity Checks"
 sh ./scripts/sanity_check.sh
 
-# log "Releasing to Heroku"
-# sh ./scripts/release_heroku.sh
+log "Releasing to Heroku"
+sh ./scripts/release_heroku.sh
 
 log "Regression tests"
 sh ./scripts/regression_tests.sh
