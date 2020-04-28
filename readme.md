@@ -1,3 +1,5 @@
+![Build](https://github.com/jsDrome/jsDrome/workflows/Build/badge.svg?branch=master)
+
 # jsDrome
 
 ## 1. Set these runtime env vars in `./.env/env.sh`.
