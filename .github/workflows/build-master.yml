@@ -49,7 +49,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Heroku Staging
-        run: sh ./scripts/release_heroku.sh
+        run: |
+          npm i @jsdrome/infra
+          sh ./scripts/release_heroku.sh
 
   regression_tests:
     needs: [sanity_check, release_heroku]
