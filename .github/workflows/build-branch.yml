@@ -23,4 +23,4 @@ jobs:
       - name: Install dependencies
         run: npm i
       - name: Sanity Checks
-        run: sh ./scripts/sanity_check.sh
+        run: sh ./node_modules/@jsdrome/scripts/sanity_check.sh
