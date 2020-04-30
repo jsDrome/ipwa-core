@@ -1,6 +1,6 @@
 module.exports = function(api) {
   api.cache(true);
   return {
-    presets: [ '@jsdrome/jsdrome' ],
+    presets: [ 'babel-preset-expo' ],
   };
 };
