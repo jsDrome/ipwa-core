@@ -94,6 +94,8 @@
     }
   },
   "props": {
+    "name": "iPWA Admin",
+    "email": "hi@jsdrome.com",
     "url": "http://localhost:5001",
     "gtmId": "GTM-12345"
   },

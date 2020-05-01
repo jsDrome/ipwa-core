@@ -1,4 +1,4 @@
-const domain = "https://jsdrome.web.app";
+const domain = "https://ipwa-core.web.app";
 
 module.exports = {
   showBannerAd: false,

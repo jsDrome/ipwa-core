@@ -16,6 +16,8 @@ import {
   // isValidUsername,
 } from '../../server.utils';
 
+const { props: { name, email, url } } = require('../../../config');
+
 import mailer from './mailer';
 
 const router = express.Router();
@@ -205,8 +207,8 @@ router.post('/', async (req, res) => {
 export default router;
 
 const getActivationMailParams = to => ({
-  from: '"Z Axis Admin" <zaxis@jsdrome.com>',
+  from: `"${name}" <${email}>`,
   to,
-  subject: 'Z Axis activation',
-  text: `Here is the activation link: https://zaxis.jsdrome.com/activate/?token=${encrypt(to)}. Good luck!`,
+  subject: 'iPWA activation',
+  text: `Here is the activation link: ${url}/activate/?token=${encrypt(to)}.`,
 });

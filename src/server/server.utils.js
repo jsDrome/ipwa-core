@@ -19,7 +19,7 @@ const {
     github: {
       clientId: githubClientId,
     },
-    jsdrome: {
+    ipwa: {
       encryptKey,
     },
   },

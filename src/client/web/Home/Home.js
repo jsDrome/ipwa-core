@@ -42,7 +42,7 @@ const HomeLayout = ({ classes, children }) => {
       {modalContent(isModalOpen)}
     </Modal>
     <Navbar
-      isUserLoggedIn={get(window._jsdrome, 'isUserLoggedIn')}
+      isUserLoggedIn={get(window._ipwa, 'isUserLoggedIn')}
       appBarProps={appBarProps}
       onRegisterClick={() => setModalOpen(MODAL_TYPES.REGISTER)} />
     <Toolbar />

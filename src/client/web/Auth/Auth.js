@@ -17,7 +17,7 @@ const NormalLayout = ({ classes, children, sidebarContent }) => {
 
   return <div className={classes.normalLayout}>
     <Navbar
-      isUserLoggedIn={get(window._jsdrome, 'isUserLoggedIn')}
+      isUserLoggedIn={get(window._ipwa, 'isUserLoggedIn')}
       onMenuButtonClick={() => setSidebarOpen(true)} />
     <Toolbar />
     <div className={classes.normalLayoutContents}>
