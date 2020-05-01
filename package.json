@@ -36,12 +36,12 @@
     "firebase:serve": "firebase serve",
     "firebase:shell": "firebase functions:shell",
     "firebase:logs": "firebase functions:log",
-    "expo:start": "expo start --config expo.json",
+    "expo:start": "expo start --config package.json",
     "expo:android": "npm run expo:start -- --android",
     "expo:ios": "npm run expo:start -- --ios",
     "expo:web": "EXPO=true npm run expo:start -- --web",
-    "expo:eject": "expo eject --config expo.json",
-    "expo:build:android": "expo build:android --config expo.json -t app-bundle",
+    "expo:eject": "expo eject --config package.json",
+    "expo:build:android": "expo build:android --config package.json -t app-bundle",
     "clean": "rimraf ./*.log dist coverage .firebase .expo web-build",
     "lint": "eslint .",
     "start:dev": "cd dist && dotenv -e ../.env nodemon index.js --watch dist/index.js",
@@ -153,5 +153,47 @@
   },
   "engines": {
     "node": "8"
+  },
+  "expo": {
+    "name": "ipwa",
+    "description": "ipwa",
+    "entryPoint": "./src/client/native/native.js",
+    "slug": "ipwa",
+    "privacy": "public",
+    "sdkVersion": "36.0.0",
+    "platforms": [
+      "android"
+    ],
+    "version": "1.11.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon-512.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#000000"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+      "package": "com.londonz.app",
+      "permissions": [],
+      "versionCode": 1,
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-6831276331714408~2680118015"
+      }
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "notification": {
+      "icon": "./assets/icon-96-white.png",
+      "color": "#000000",
+      "androidMode": "collapse",
+      "androidCollapsedTitle": "Z Axis Digest"
+    }
   }
 }
