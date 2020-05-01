@@ -16,15 +16,15 @@ env:
   config_props__url: ${{ secrets.config_props__url }}
   FIREBASE_APP_NAME: ${{ secrets.FIREBASE_APP_NAME }}
   FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+  DOCKER_USER: ${{ secrets.DOCKER_USER }}
+  DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+  EXPO_CLI_USERNAME: ${{ secrets.EXPO_CLI_USERNAME }}
+  EXPO_CLI_PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}
   # GITHUB_DOCKER_IMAGE_NAME: ipwa
-  # DOCKER_USER: ${{ secrets.DOCKER_USER }}
-  # DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
   # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   # GITHUB_REPO: ${{ github.repository }}
   # GITHUB_USER: ${{ github.actor }}
-  # EXPO_CLI_USERNAME: ${{ secrets.EXPO_CLI_USERNAME }}
-  # EXPO_CLI_PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}
   # config_firebase__apiKey: ${{ secrets.config_firebase__apiKey }}
 jobs:
   sanity_check:
@@ -63,15 +63,15 @@ jobs:
           npm i
           sh ./node_modules/@jsdrome/scripts/regression_tests.sh
 
-  # release_docker_images:
-  #   needs: [sanity_check, release_heroku, regression_tests]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Push to Dockerhub
-  #       run: sh ./node_modules/@jsdrome/scripts/release_dockerhub.sh
-  #     - name: Push to Github Container Registry
-  #       run: sh ./node_modules/@jsdrome/scripts/release_github.sh
+  release_docker_images:
+    needs: [sanity_check, release_heroku, regression_tests]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Push to Dockerhub
+        run: sh ./node_modules/@jsdrome/scripts/release_dockerhub.sh
+      # - name: Push to Github Container Registry
+      #   run: sh ./node_modules/@jsdrome/scripts/release_github.sh
 
   release_firebase:
     needs: [sanity_check, release_heroku, regression_tests]
@@ -83,21 +83,21 @@ jobs:
           npm i
           sh ./node_modules/@jsdrome/scripts/release_firebase.sh
 
-  # release_expo:
-  #   needs: [sanity_check, release_heroku, regression_tests]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v1
-  #     - uses: actions/setup-node@v1
-  #       with:
-  #         node-version: 12.x
-  #     - uses: expo/expo-github-action@v5
-  #       with:
-  #         expo-version: 3.x
-  #         expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
-  #         expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
-  #     - run: npm i
-  #     - run: expo publish --config expo.json
+  release_expo:
+    needs: [sanity_check, release_heroku, regression_tests]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - uses: expo/expo-github-action@v5
+        with:
+          expo-version: 3.x
+          expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
+          expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
+      - run: npm i
+      - run: expo publish --config expo.json
 
   # release_npm:
   #   needs: [sanity_check, release_heroku, regression_tests]
