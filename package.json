@@ -156,10 +156,10 @@
     "node": "8"
   },
   "expo": {
-    "name": "ipwa",
-    "description": "ipwa",
+    "name": "ipwa-core",
+    "description": "ipwa-core",
     "entryPoint": "./src/client/native/native.js",
-    "slug": "ipwa",
+    "slug": "ipwa-core",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
