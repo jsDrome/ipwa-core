@@ -114,6 +114,7 @@
     "husky": "^4.2.5",
     "jest": "^25.4.0",
     "puppeteer": "^3.0.1",
+    "puppeteer-core": "^3.0.2",
     "react-test-renderer": "^16.13.1",
     "rimraf": "^3.0.2"
   },
