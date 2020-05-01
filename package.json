@@ -105,7 +105,7 @@
     "@jsdrome/commitlint-config": "^1.1.0",
     "@jsdrome/eslint-config": "^1.1.0",
     "@jsdrome/infra": "^0.2.0",
-    "@jsdrome/scripts": "^1.7.0",
+    "@jsdrome/scripts": "^1.8.0",
     "@percy/script": "^1.0.3",
     "babel-jest": "^25.4.0",
     "codecov": "^3.6.5",
