@@ -99,7 +99,7 @@ jobs:
           expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
       - run: npm i
-      - run: expo publish --config expo.json
+      - run: expo publish --config package.json
 
   # release_npm:
   #   needs: [sanity_check, release_heroku, regression_tests]
