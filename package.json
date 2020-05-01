@@ -1,5 +1,5 @@
 {
-  "name": "@jsdrome/jsdrome",
+  "name": "@jsdrome/ipwa-core",
   "version": "1.0.0",
   "description": "",
   "main": "node_modules/expo/AppEntry.js",
@@ -49,18 +49,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jsDrome/jsdrome.git"
+    "url": "git+https://github.com/jsDrome/ipwa-core.git"
   },
   "keywords": [
     "jsdrome",
-    "boilerplate"
+    "boilerplate",
+    "ipwa"
   ],
   "author": "Sreeram Padmanabhan",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jsDrome/jsdrome/issues"
+    "url": "https://github.com/jsDrome/ipwa-core/issues"
   },
-  "homepage": "https://github.com/jsDrome/jsdrome#readme",
+  "homepage": "https://github.com/jsDrome/ipwa-core#readme",
   "dependencies": {
     "@jsdrome/babel-preset-jsdrome": "^1.3.0",
     "@jsdrome/components": "^1.2.0",
@@ -193,7 +194,7 @@
       "icon": "./assets/icon-96-white.png",
       "color": "#000000",
       "androidMode": "collapse",
-      "androidCollapsedTitle": "Z Axis Digest"
+      "androidCollapsedTitle": "iPWA Digest"
     }
   }
 }

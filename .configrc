@@ -32,7 +32,7 @@
     "firebase": {
       "apiKey": "abcde"
     },
-    "jsdrome": {
+    "ipwa": {
       "encryptKey": "abcde"
     },
     "sendInBlue": {
@@ -99,8 +99,8 @@
   },
   "firebase": {
     "apiKey": "abcde",
-    "authDomain": "jsdrome.firebaseapp.com",
-    "databaseURL": "https://jsdrome.firebaseio.com",
-    "storageBucket": "jsdrome.appspot.com"
+    "authDomain": "ipwa-core.firebaseapp.com",
+    "databaseURL": "https://ipwa-core.firebaseio.com",
+    "storageBucket": "ipwa-core.appspot.com"
   }
 }
