@@ -50,7 +50,7 @@ const template = (helmet, html, css, isUserLoggedIn, user) => `
       <style id="jss-server-side">${css}</style>
     </head>
     <script>
-      window._jsdrome = {
+      window._ipwa = {
         isUserLoggedIn: ${isUserLoggedIn},
         user: '${user}',
         gtmId: '${gtmId}',
