@@ -69,7 +69,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Push to Dockerhub
-        run: sh ./node_modules/@jsdrome/scripts/release_dockerhub.sh
+        run: |
+          npm i
+          sh ./node_modules/@jsdrome/scripts/release_dockerhub.sh
       # - name: Push to Github Container Registry
       #   run: sh ./node_modules/@jsdrome/scripts/release_github.sh
 
