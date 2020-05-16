@@ -190,7 +190,6 @@
     "expo-permissions": "^8.1.0",
     "expo-updates": "^0.2.2",
     "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.0.tar.gz",
-    "react-native-webview": "^9.4.0",
-    "react-native-windows": "^0.61.9"
+    "react-native-webview": "^9.4.0"
   }
 }
