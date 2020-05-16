@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { withStyles } from '@material-ui/core/styles';
 import get from 'lodash/get';
-
 import {
   Navbar,
   Toolbar,
   Sidebar,
-  SocialLinks,
-  CopyrightInfo,
 } from '@jsdrome/components';
+
+import SocialLinks from '../SocialLinks/SocialLinks';
+import Copyright from '../Copyright/Copyright';
 
 import styles from './Auth.styles';
 
@@ -23,7 +23,7 @@ const NormalLayout = ({ classes, children, sidebarContent }) => {
     <div className={classes.normalLayoutContents}>
       {children}
       <SocialLinks />
-      <CopyrightInfo />
+      <Copyright />
     </div>
     <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)}>
       {sidebarContent}

@@ -6,10 +6,10 @@ import {
   Navbar,
   Toolbar,
   Modal,
-  SocialLinks,
-  CopyrightInfo,
 } from '@jsdrome/components';
 
+import SocialLinks from '../SocialLinks/SocialLinks';
+import Copyright from '../Copyright/Copyright';
 import Register from '../Register/Register';
 
 import styles from './Home.styles';
@@ -49,7 +49,7 @@ const HomeLayout = ({ classes, children }) => {
     <div className={classes.homeLayoutContents}>
       {children}
       <SocialLinks />
-      <CopyrightInfo />
+      <Copyright />
     </div>
   </div>;
 }

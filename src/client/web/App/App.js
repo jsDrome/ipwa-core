@@ -1,9 +1,9 @@
 import React, { Fragment, useEffect } from "react";
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Alert } from '@jsdrome/components';
 
-import { Meta, Alert } from '@jsdrome/components';
-
+import Meta from '../Meta/Meta';
 import { checkForMessage } from '../../../store/app/appActions';
 
 const App = ({ children, checkForMessage, alert }) => {

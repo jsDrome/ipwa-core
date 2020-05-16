@@ -1,7 +1,7 @@
 import express from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { Provider as ReduxProvider } from 'react-redux';
 import { ServerStyleSheets, ThemeProvider } from '@material-ui/core/styles';
 
